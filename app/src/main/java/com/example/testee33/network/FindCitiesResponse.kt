@@ -1,4 +1,4 @@
-package com.example.testee33
+package com.example.testee33.network
 
 data class FindCitiesResponse(
     var data: List<FindCitiesBody>,

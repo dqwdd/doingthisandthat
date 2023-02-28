@@ -1,6 +1,6 @@
 package com.example.testee33.network.api
 
-import com.example.testee33.FindCitiesResponse
+import com.example.testee33.network.FindCitiesResponse
 import retrofit2.Call
 import retrofit2.http.*
 

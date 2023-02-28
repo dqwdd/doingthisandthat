@@ -1,14 +1,12 @@
 package com.example.testee33
 
 import androidx.lifecycle.MutableLiveData
-import com.example.testee33.network.FindCityRepository
+import com.example.testee33.network.FindCitiesResponse
 import com.example.testee33.network.api.Callback
 import com.example.testee33.network.api.RetrofitBuilder
 import java.lang.Exception
 
-class MainViewModel(
-    private val repository: FindCityRepository
-) : BaseViewModel() {
+class MainViewModel : BaseViewModel() {
     private val apiHelper = RetrofitBuilder.apiService
 
     val findCitiesData = MutableLiveData<Callback<FindCitiesResponse>>()
@@ -23,9 +21,5 @@ class MainViewModel(
                 findCitiesData.postValue(Callback.error(e.toString(), null))
             }
         }
-    }
-
-    fun loadFindCities(findCityName: String) {
-        repository.getFindCity(findCityName)
     }
 }
