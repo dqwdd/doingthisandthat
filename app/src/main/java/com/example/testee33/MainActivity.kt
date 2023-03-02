@@ -7,7 +7,9 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.testee33.network.api.Status
 import com.example.testee33.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         setFindCitiesObserver()
         viewModel.setFindCities("")
+        viewModel.loadFindCities("")
     }
 
     private fun setFindCitiesObserver() {
