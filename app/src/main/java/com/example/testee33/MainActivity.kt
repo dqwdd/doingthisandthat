@@ -17,14 +17,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var testAdapter: TestAdapter
 
-    private var totalCount = 0 // 전체 아이템 개수
-    private var isNext = false // 다음 페이지 유무
-    private var page = 0       // 현재 페이지
-    private var limit = 10     // 한 번에 가져올 아이템 수
-
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
+
+    private lateinit var scrollListener: EndlessRecyclerViewScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,17 +45,12 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             Log.e("tetest", "data == null else")
 
-                            totalCount = it.data?.data!!.size
-
                             initAdapter()
                             initListener()
-                            testAdapter.setItems(it.data!!.data)
-                            testAdapter.setItems(it.data!!.data)
-                            testAdapter.setItems(it.data!!.data)
-                            testAdapter.setItems(it.data!!.data)
-                            testAdapter.setItems(it.data!!.data)
-                            testAdapter.setItems(it.data!!.data)
-                            testAdapter.setItems(it.data!!.data)
+
+                            for (i: Int in 1..100) {
+                                testAdapter.setItems(it.data!!.data)
+                            }
                         }
                     } else {
                         Log.e("tetest", "status 200 else")
@@ -76,9 +68,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initAdapter() {
         testAdapter = TestAdapter()
+
         val linearLayoutManager = LinearLayoutManager(this)
         binding.rvTest.layoutManager = linearLayoutManager
-        val scrollListener: EndlessRecyclerViewScrollListener
+
         scrollListener = object : EndlessRecyclerViewScrollListener(linearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
                 Toast.makeText(this@MainActivity, "tt", Toast.LENGTH_SHORT).show()
