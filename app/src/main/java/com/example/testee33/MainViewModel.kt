@@ -14,22 +14,6 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val findCityRepository: FindCityRepository
 ) : BaseViewModel() {
-    private val apiHelper = RetrofitBuilder.apiService
-
-    val findCitiesData = MutableLiveData<Callback<FindCitiesResponse>>()
-
-    fun setFindCities(inputCityName: String) {
-        launchViewModelScope {
-            findCitiesData.postValue(Callback.loading())
-            try {
-                val data = apiHelper.requestFindCitiesOfMission(inputCityName)
-                findCitiesData.postValue(Callback.success(data))
-            } catch (e: Exception) {
-                findCitiesData.postValue(Callback.error(e.toString(), null))
-            }
-        }
-    }
-
     fun loadFindCities(findCityName: String) {
         launchViewModelScope {
             Log.e("tetest11", findCityRepository.requestFindCityNames(findCityName).data[0].cityName)

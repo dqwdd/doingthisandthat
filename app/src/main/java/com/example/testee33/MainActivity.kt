@@ -2,10 +2,7 @@ package com.example.testee33
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.example.testee33.network.api.Status
 import com.example.testee33.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,34 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setFindCitiesObserver()
-        viewModel.setFindCities("")
-        viewModel.loadFindCities("")
-    }
-
-    private fun setFindCitiesObserver() {
-        viewModel.findCitiesData.observe(this) {
-            when (it.status) {
-                Status.LOADING -> {}
-                Status.SUCCESS -> {
-                    if (it.data?.status == 200) {
-                        Log.e("tetest", "status == 200")
-                        if (it.data?.data == null) {
-                            Log.e("tetest", "data == null")
-                        } else {
-                            Log.e("tetest", "data == null else")
-                        }
-                    } else {
-                        Log.e("tetest", "status 200 else")
-                    }
-                }
-                Status.ERROR -> {
-                    Log.e("tetest", "ERROR")
-                }
-                else -> {
-                    Log.e("tetest", "ELSE")
-                }
-            }
+        binding.tvTest.setOnClickListener {
+            viewModel.loadFindCities("")
         }
     }
 }
