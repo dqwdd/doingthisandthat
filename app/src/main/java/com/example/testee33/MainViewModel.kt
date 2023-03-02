@@ -26,6 +26,6 @@ class MainViewModel(
     }
 
     fun loadFindCities(findCityName: String) {
-        repository.getFindCity(findCityName)
+        //repository.getFindCity(findCityName)
     }
 }

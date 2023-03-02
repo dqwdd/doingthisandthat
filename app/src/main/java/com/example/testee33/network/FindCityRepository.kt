@@ -8,4 +8,7 @@ import retrofit2.Call
 class FindCityRepository(private val service: ApiService) {
     fun getFindCity(cityName: String = ""): Call<FindCitiesResponse> =
             service.getFindCitiesOfMission(cityName)
+
+    suspend fun requestFindCity(cityName: String = ""): FindCitiesResponse =
+            service.requestFindCitiesOfMission(cityName)
 }
