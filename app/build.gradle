@@ -62,23 +62,17 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
 
-    // Room
-    implementation 'androidx.room:room-ktx:2.4.0'
-    implementation 'androidx.room:room-runtime:2.4.0'
-    kapt 'androidx.room:room-compiler:2.4.0'
-
     // Coroutine
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
-    //RxAndroid와 RxJava , RxKotlin 추가
+    //RxAndroid 와 RxJava , RxKotlin 추가
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.6'
     implementation 'io.reactivex.rxjava3:rxkotlin:3.0.0'
 
-    // 필요한 API를 찾아서 추가
+    // 필요한 API 를 찾아서 추가
     implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
-
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
