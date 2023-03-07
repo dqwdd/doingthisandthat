@@ -9,6 +9,6 @@ class TestDataSourceImpl @Inject constructor(
     private val networkService = RetrofitBuilder.apiService
 
     override suspend fun requestFindCityNames(searchCity: String): FindCitiesResponse {
-        return networkService.requestFindCitiesOfMission("")
+        return networkService.requestFindCitiesOfMission(searchCity)
     }
 }

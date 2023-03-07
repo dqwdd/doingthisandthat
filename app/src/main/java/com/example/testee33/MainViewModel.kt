@@ -14,10 +14,21 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val findCityRepository: FindCityRepository
 ) : BaseViewModel() {
+
+    val findCitiesData = MutableLiveData<Callback<FindCitiesResponse>>()
+
     fun loadFindCities(findCityName: String) {
         launchViewModelScope {
-            Log.e("tetest11", findCityRepository.requestFindCityNames(findCityName).data[0].cityName)
-            Log.e("tetest11", findCityRepository.requestFindCityNames(findCityName).data[1].cityName)
+            findCitiesData.postValue(Callback.loading())
+            try {
+                val data = findCityRepository.requestFindCityNames(findCityName)
+                findCitiesData.postValue(Callback.success(data))
+            } catch (e: Exception) {
+                findCitiesData.postValue(Callback.error(e.toString(), null))
+            }
+
+//            Log.e("tetest11", findCityRepository.requestFindCityNames(findCityName).data[0].cityName)
+//            Log.e("tetest11", findCityRepository.requestFindCityNames(findCityName).data[1].cityName)
         }
     }
 }

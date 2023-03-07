@@ -10,4 +10,3 @@ interface ApiService {
         @Query("city") city: String
     ): FindCitiesResponse
 }
-
